@@ -37,11 +37,6 @@ public class cadVendas  {
 		Bebida coca = new Bebida("coca", "7852", 8, 10, "Coca-cola");
 		lista.add(coca);
 		
-		for(Produto x : lista) {
-			System.out.println(x.getDescricao());
-		}
-	
-		
 		System.out.println("          ╔                             ╗");
 		System.out.print("          ║   Agiota Conveniência G7®️   ║\n");
 		System.out.print("	  ╚                             ╝\n");
@@ -117,17 +112,20 @@ public class cadVendas  {
 					System.out.printf("Preço unitário: R$%.2f \n", queijo.getValorUnitario());
 					int quantidadeSalgadinho = leia.nextInt();
 					
-					if(quantidadeSalgadinho <= queijo.getQuantEstoque())
-					{
-						
-						queijo.retirarEstoque(quantidadeSalgadinho);
-						
-						totalSalgadinho = quantidadeSalgadinho;
-						totalSalgadinho *= queijo.getValorUnitario();
-					}
-					else 
-					{
-						System.out.println("Não temos essa quantidade no estoque...");
+					for(int x = 0; x < lista.size(); x++) {
+						if(lista.get(x).getDescricao().contains("salgadinho-queijo") == true) {
+							if(quantidadeSalgadinho <= lista.get(x).getQuantEstoque())
+							{
+								lista.get(x).retirarEstoque(quantidadeSalgadinho);
+								
+								totalSalgadinho = quantidadeSalgadinho;
+								totalSalgadinho *= queijo.getValorUnitario();
+							}
+							else 
+							{
+								System.out.println("Não temos essa quantidade no estoque...");
+							}
+						}
 					}
 				
 			}
@@ -141,17 +139,20 @@ public class cadVendas  {
 					System.out.printf("Preço unitário: R$%.2f \n", doce.getValorUnitario());
 					int quantidadeDoces = leia.nextInt();
 				
-					if(quantidadeDoces <= doce.getQuantEstoque())
-					{
-						
-						doce.retirarEstoque(quantidadeDoces);
-						
-						totalDoces = quantidadeDoces;
-						totalDoces *= doce.getValorUnitario();
-					}
-					else 
-					{
-						System.out.println("Não temos essa quantidade no estoque...");
+					for(int x = 0; x < lista.size(); x++) {
+						if(lista.get(x).getDescricao().contains("chocolate") == true) {
+							if(quantidadeDoces <= lista.get(x).getQuantEstoque())
+							{
+								lista.get(x).retirarEstoque(quantidadeDoces);
+								
+								totalDoces = quantidadeDoces;
+								totalDoces *= doce.getValorUnitario();
+							}
+							else 
+							{
+								System.out.println("Não temos essa quantidade no estoque...");
+							}
+						}
 					}
 				
 			}
@@ -164,16 +165,20 @@ public class cadVendas  {
 					System.out.printf("Preço unitário: R$%.2f \n", gelo.getValorUnitario());
 					int quantidadeGelo = leia.nextInt();
 				
-					if(quantidadeGelo <= gelo.getQuantEstoque())
-					{	
-						gelo.retirarEstoque(quantidadeGelo);
-						
-						totalGelo = quantidadeGelo;
-						totalGelo *= gelo.getValorUnitario();
-					}
-					else 
-					{
-						System.out.println("Não temos essa quantidade no estoque...");
+					for(int x = 0; x < lista.size(); x++) {
+						if(lista.get(x).getDescricao().contains("gelo") == true) {
+							if(quantidadeGelo <= lista.get(x).getQuantEstoque())
+							{
+								lista.get(x).retirarEstoque(quantidadeGelo);
+								
+								totalGelo = quantidadeGelo;
+								totalGelo *= gelo.getValorUnitario();
+							}
+							else 
+							{
+								System.out.println("Não temos essa quantidade no estoque...");
+							}
+						}
 					}
 				
 			}  
@@ -184,18 +189,20 @@ public class cadVendas  {
 					System.out.printf("Preço unitário: R$%.2f \n", marvel.getValorUnitario());
 					int quantidadeRevista = leia.nextInt();
 				
-					if(quantidadeRevista <= marvel.getQuantEstoque())
-					{
-						
-						
-						marvel.retirarEstoque(quantidadeRevista);
-						
-						totalRevista = quantidadeRevista;
-						totalRevista *= marvel.getValorUnitario();
-					}
-					else 
-					{
-						System.out.println("Não temos essa quantidade no estoque...");
+					for(int x = 0; x < lista.size(); x++) {
+						if(lista.get(x).getDescricao().contains("marvel") == true) {
+							if(quantidadeRevista <= lista.get(x).getQuantEstoque())
+							{
+								lista.get(x).retirarEstoque(quantidadeRevista);
+								
+								totalRevista = quantidadeRevista;
+								totalRevista *= marvel.getValorUnitario();
+							}
+							else 
+							{
+								System.out.println("Não temos essa quantidade no estoque...");
+							}
+						}
 					}
 				
 			}  
