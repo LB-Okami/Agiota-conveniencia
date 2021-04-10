@@ -1,10 +1,25 @@
 package entities;
 
 public class Salgadinho extends Produto{
-
+	private String sabor;
+	
 	public Salgadinho(String descricao, String codigo) {
 		super(descricao, codigo);
-		// TODO Auto-generated constructor stub
+		
+	}
+	
+	public Salgadinho(String descricao, String codigo, double valorUnitario, int quantEstoque) {
+		super(descricao, codigo, valorUnitario);
+		
+	}
+
+	//Encapsulamento
+	public String getSabor() {
+		return sabor;
+	}
+
+	public void setSabor(String sabor) {
+		this.sabor = sabor;
 	}
 	
 	

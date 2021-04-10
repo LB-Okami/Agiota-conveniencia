@@ -7,6 +7,11 @@ public class Doces extends Produto {
 		super(descricao, codigo, valorUnitario);
 		this.fabricante = fabricante;
 	}
+	
+	public Doces(String descricao, String codigo, double valorUnitario, int quantEstoque) {
+		super(descricao, codigo, valorUnitario);
+		
+	}
 
 	//Encapsulamento - Getters and setters
 	public String getFabricante() {

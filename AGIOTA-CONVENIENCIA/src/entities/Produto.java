@@ -5,31 +5,38 @@ public abstract class Produto {
 	private String descricao;
 	private String codigo;
 	private double valorUnitario;
-	private int quantEstoque = 0;
+	private int quantEstoque = 10;
 	
 	
 	//Construtor 
 	public Produto(String descricao, String codigo, double valorUnitario) {
 		super();
 		this.descricao = descricao;
-		codigo = codigo; 
+		this.codigo = codigo; 
 		this.valorUnitario = valorUnitario;
 	}
 	//Construtor com sobrecarga
+	public Produto(String descricao, String codigo, double valorUnitario, int quantEstoque) {
+		super();
+		this.descricao = descricao;
+		this.codigo = codigo;
+		this.valorUnitario = valorUnitario;
+		this.quantEstoque = quantEstoque;
+	}
+	
 	public Produto(String descricao, String codigo) {
 		super();
 		this.descricao = descricao;
-		codigo = codigo;
+		this.codigo = codigo;
 	}
 
-	
-	
 	//Encapsulamento - getters & setters
 	public String getDescricao() {
 		return descricao;
 	}
 
 
+	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}

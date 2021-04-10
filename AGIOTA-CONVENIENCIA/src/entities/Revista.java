@@ -1,7 +1,7 @@
 package entities;
 
 public class Revista extends Produto {
-	
+	private String editora;
 
 	
 
@@ -9,8 +9,13 @@ public class Revista extends Produto {
 		super(descricao, codigo, valorUnitario);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Revista(String descricao, String codigo, double valorUnitario, int quantEstoque) {
+		super(descricao, codigo, valorUnitario);
+		// TODO Auto-generated constructor stub
+	}
 
-	private String editora;
+	   
 
 	//Encapsulamento - Getters and setters
 	
