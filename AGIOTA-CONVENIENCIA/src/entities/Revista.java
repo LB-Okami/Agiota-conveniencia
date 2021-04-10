@@ -5,8 +5,8 @@ public class Revista extends Produto {
 
 	
 
-	public Revista(String descricao, String iD, double valorUnitario) {
-		super(descricao, iD, valorUnitario);
+	public Revista(String descricao, String codigo, double valorUnitario) {
+		super(descricao, codigo, valorUnitario);
 		// TODO Auto-generated constructor stub
 	}
 

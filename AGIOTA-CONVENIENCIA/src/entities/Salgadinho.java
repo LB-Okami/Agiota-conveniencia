@@ -2,8 +2,8 @@ package entities;
 
 public class Salgadinho extends Produto{
 
-	public Salgadinho(String descricao, String iD) {
-		super(descricao, iD);
+	public Salgadinho(String descricao, String codigo) {
+		super(descricao, codigo);
 		// TODO Auto-generated constructor stub
 	}
 	

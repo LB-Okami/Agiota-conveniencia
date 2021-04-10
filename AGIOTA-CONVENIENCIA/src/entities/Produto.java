@@ -3,23 +3,23 @@ package entities;
 public abstract class Produto {
 	//Atributos
 	private String descricao;
-	private String ID;
+	private String codigo;
 	private double valorUnitario;
 	private int quantEstoque = 0;
 	
 	
 	//Construtor 
-	public Produto(String descricao, String iD, double valorUnitario) {
+	public Produto(String descricao, String codigo, double valorUnitario) {
 		super();
 		this.descricao = descricao;
-		ID = iD; 
+		codigo = codigo; 
 		this.valorUnitario = valorUnitario;
 	}
 	//Construtor com sobrecarga
-	public Produto(String descricao, String iD) {
+	public Produto(String descricao, String codigo) {
 		super();
 		this.descricao = descricao;
-		ID = iD;
+		codigo = codigo;
 	}
 
 	
@@ -35,13 +35,13 @@ public abstract class Produto {
 	}
 
 
-	public String getID() {
-		return ID;
+	public String getCodigo() {
+		return codigo;
 	}
 
 	/*
-	 public void setID(String ID) {
-		this.ID = ID;
+	 public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	*/
 
