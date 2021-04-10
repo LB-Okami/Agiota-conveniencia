@@ -7,12 +7,12 @@ public class Revista extends Produto {
 
 	public Revista(String descricao, String codigo, double valorUnitario) {
 		super(descricao, codigo, valorUnitario);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	public Revista(String descricao, String codigo, double valorUnitario, int quantEstoque) {
+	public Revista(String descricao, String codigo, double valorUnitario, int quantEstoque, String editora) {
 		super(descricao, codigo, valorUnitario);
-		// TODO Auto-generated constructor stub
+		this.editora = editora;
 	}
 
 	   

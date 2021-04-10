@@ -7,7 +7,6 @@ public abstract class Produto {
 	private double valorUnitario;
 	private int quantEstoque = 10;
 	
-	
 	//Construtor 
 	public Produto(String descricao, String codigo, double valorUnitario) {
 		super();
@@ -75,14 +74,14 @@ public abstract class Produto {
 	
 	//Métodos
 	public void incluirEstoque(int valorInserido) {
-		quantEstoque += valorInserido;
+		this.quantEstoque += valorInserido;
 		
 	}
 	
 	public void retirarEstoque(int valorInserido) {
 		
 		if(quantEstoque >= valorInserido) {
-			quantEstoque -= valorInserido;
+			this.quantEstoque -= valorInserido;
 		}
 		else if(quantEstoque < valorInserido) {
 			System.out.println("Infelizmente o estoque deste produto acabou...");

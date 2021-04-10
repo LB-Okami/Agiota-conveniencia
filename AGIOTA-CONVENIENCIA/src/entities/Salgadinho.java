@@ -8,9 +8,9 @@ public class Salgadinho extends Produto{
 		
 	}
 	
-	public Salgadinho(String descricao, String codigo, double valorUnitario, int quantEstoque) {
+	public Salgadinho(String descricao, String codigo, double valorUnitario, int quantEstoque, String sabor) {
 		super(descricao, codigo, valorUnitario);
-		
+		this.sabor = sabor;
 	}
 
 	//Encapsulamento

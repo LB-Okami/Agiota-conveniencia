@@ -2,14 +2,10 @@ package entities;
 
 public class Doces extends Produto {
 	private String fabricante;
-
-	public Doces(String descricao, String codigo, double valorUnitario, String fabricante) {
+	
+	public Doces(String descricao, String codigo, double valorUnitario, int quantEstoque, String fabricante) {
 		super(descricao, codigo, valorUnitario);
 		this.fabricante = fabricante;
-	}
-	
-	public Doces(String descricao, String codigo, double valorUnitario, int quantEstoque) {
-		super(descricao, codigo, valorUnitario);
 		
 	}
 

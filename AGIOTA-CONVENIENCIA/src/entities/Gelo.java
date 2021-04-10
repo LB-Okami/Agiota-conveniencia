@@ -8,9 +8,9 @@ public class Gelo extends Produto {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Gelo(String descricao, String codigo, double valorUnitario, int quantEstoque) {
+	public Gelo(String descricao, String codigo, double valorUnitario, int quantEstoque, double peso) {
 		super(descricao, codigo, valorUnitario);
-		// TODO Auto-generated constructor stub
+		this.peso = peso;
 	}
 
 	//Encapsulamentos
