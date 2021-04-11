@@ -13,7 +13,8 @@ import entities.Produto;
 import entities.Revista;
 import entities.Salgadinho;
 
-public class cadVendas  {
+public abstract class cadVendas  { // Adicionando "abstract" 
+	
 	public static void main(String[] args) throws InterruptedException {
 		Scanner leia = new Scanner(System.in);
 		double total = 0;
@@ -26,24 +27,24 @@ public class cadVendas  {
 		
 		List<Produto> lista = new ArrayList<>();
 		
-		Revista marvel = new Revista("revista marvel", "6985", 50, 10, "Panini");
+		Revista marvel = new Revista("Revista Marvel", "6985", 50, 10, "Panini");
 		lista.add(marvel);
-		Salgadinho queijo = new Salgadinho("salgadinho-queijo", "5652", 13, 10, "Pringles");
+		Salgadinho queijo = new Salgadinho("Salgadinho de queijo", "5652", 13, 10, "Pringles");
 		lista.add(queijo);
-		Doces doce = new Doces("chocolate", "1582", 7, 10, "Nestle");
+		Doces doce = new Doces("Chocolate", "1582", 7, 10, "Nestlé");
 		lista.add(doce);
-		Gelo gelo = new Gelo("gelo", "6523", 12, 10, 12);
+		Gelo gelo = new Gelo("Gelo", "6523", 12, 10, 12);
 		lista.add(gelo);
-		Bebida coca = new Bebida("coca", "7852", 8, 10, "Coca-cola");
+		Bebida coca = new Bebida("Coca-Cola", "7852", 8, 10, "Coca-cola");
 		lista.add(coca);
 		
 		System.out.println("          ╔                             ╗");
 		System.out.print("          ║   Agiota Conveniência G7®️   ║\n");
 		System.out.print("	  ╚                             ╝\n");
 		System.out.print("──────────────────────────────────────────────────");
-		System.out.println("\n         Aqui, você não fica nos devendo...");
+		System.out.println("\n       Venha nos conhecer! E traga dinheiro...");
 		Thread.sleep(100);
-		System.out.print("                   ( ಠ ʖ̯ ಠ )\n");
+		System.out.print("                    ( ಠ ʖ̯ ಠ )\n");
 		System.out.println();
 		System.out.println();
 			
@@ -72,163 +73,187 @@ public class cadVendas  {
 		limpatela();
 		
 		int tipoProduto;
+		boolean compraEfetuada = false;
 		
 		do {
-			System.out.print("\nDigite uma opção:\n\n1 - Bebidas\n2 - Salgadinhos\n3 - Doces\n4 - Gelo\n5 - Revistas\n6 - Sair\n");
+			System.out.print("╔                   ╗\n║ • 1 - Bebidas     ║\n║ • 2 - Salgadinhos ║\n║ • 3 - Doces       ║\n║ • 4 - Gelo        ║\n║ • 5 - Revistas    ║\n║                   ║\n║ • 6 - Sair"
+					+ "        ║\n╚                   ╝");
+			System.out.print("\nSelecione uma opção: ");
 			tipoProduto = leia.nextInt();
+			System.out.println();
 			
-			if (tipoProduto < 1) {
-				System.out.println("\nPor favor, insira uma opção válida");
+			if (tipoProduto < 1 || tipoProduto > 6) {
+				System.out.println("\n» Por favor, insira uma opção válida.\n");
 				
-			} else if (tipoProduto == 1) { // Início bebida
+			} else if (tipoProduto == 1) { // Início Bebida
 				
 				while(coca.getQuantEstoque() == 10) {
-					System.out.printf("Quantas você deseja comprar? Estoque: %d \n", coca.getQuantEstoque());
-					System.out.printf("Preço unitário: R$%.2f \n", coca.getValorUnitario());
+					System.out.printf("╔                          ╗\n║ Estoque: %d Coca-Colas.  ║\n" , coca.getQuantEstoque());
+					System.out.printf("║ Preço unitário: R$%.2f.  ║\n╚                          ╝" , coca.getValorUnitario());
+					System.out.print("\nQuantas você deseja comprar? ");
 					int quantidadeBebida = leia.nextInt();
 					
-					for(int x = 0; x < lista.size(); x++) {
-						if(lista.get(x).getDescricao().contains("coca") == true) {
-							if(quantidadeBebida <= lista.get(x).getQuantEstoque())
-							{
-								lista.get(x).retirarEstoque(quantidadeBebida);
-								
-								totalBebida = quantidadeBebida;
-								totalBebida *= coca.getValorUnitario();
+					if (quantidadeBebida < 1) {
+						System.out.println("\n» Por favor, insira um valor de 1 a 10.\n");
+					} else {
+						compraEfetuada = true;
+						
+						for (int x = 0; x < lista.size(); x++) {
+							if (lista.get(x).getDescricao().contains("Coca-Cola") == true) {
+								if (quantidadeBebida <= lista.get(x).getQuantEstoque()) {
+									lista.get(x).retirarEstoque(quantidadeBebida);
+									
+									totalBebida = quantidadeBebida;
+									totalBebida *= coca.getValorUnitario();
+									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
+								}
+								else {
+									System.out.println("\n» Não temos essa quantidade no estoque...");
+								}
 							}
-							else 
-							{
-								System.out.println("Não temos essa quantidade no estoque...");
-							}
-						}
+						}						
 					}
-				
-			}
-				
+				}				
 			} else if (tipoProduto == 2) { // Início Salgadinho
 				
 				while(queijo.getQuantEstoque() == 10) {
-					System.out.printf("Quantas você deseja comprar? Estoque: %d \n", queijo.getQuantEstoque());
-					System.out.printf("Preço unitário: R$%.2f \n", queijo.getValorUnitario());
+					System.out.printf("╔                                             ╗\n║ Estoque: %d salgadinhos de queijo Pringles. ║\n" , queijo.getQuantEstoque());
+					System.out.printf("║ Preço unitário: R$%.2f.                    ║\n╚                                             ╝" , queijo.getValorUnitario());
+					System.out.print("\nQuantos você deseja comprar? ");
 					int quantidadeSalgadinho = leia.nextInt();
 					
-					for(int x = 0; x < lista.size(); x++) {
-						if(lista.get(x).getDescricao().contains("salgadinho-queijo") == true) {
-							if(quantidadeSalgadinho <= lista.get(x).getQuantEstoque())
-							{
-								lista.get(x).retirarEstoque(quantidadeSalgadinho);
-								
-								totalSalgadinho = quantidadeSalgadinho;
-								totalSalgadinho *= queijo.getValorUnitario();
+					if (quantidadeSalgadinho < 1) {
+						System.out.println("\n» Por favor, insira um valor de 1 a 10.\n");
+					} else {
+						compraEfetuada = true;
+						
+						for (int x = 0; x < lista.size(); x++) {
+							if (lista.get(x).getDescricao().contains("Salgadinho de queijo") == true) {
+								if (quantidadeSalgadinho <= lista.get(x).getQuantEstoque()) {
+									lista.get(x).retirarEstoque(quantidadeSalgadinho);
+									
+									totalSalgadinho = quantidadeSalgadinho;
+									totalSalgadinho *= queijo.getValorUnitario();
+									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
+								} else {
+									System.out.println("» Não temos essa quantidade no estoque...");
+								}
 							}
-							else 
-							{
-								System.out.println("Não temos essa quantidade no estoque...");
-							}
-						}
+						}					
 					}
+				}				
+			} else if (tipoProduto == 3) { // Início Doce
 				
-			}
-				
-			} else if (tipoProduto == 3) { // Início doces
-				
-				while(doce.getQuantEstoque() == 10) {
-					
-					
-					System.out.printf("Quantas você deseja comprar? Estoque: %d \n", doce.getQuantEstoque());
-					System.out.printf("Preço unitário: R$%.2f \n", doce.getValorUnitario());
+				while (doce.getQuantEstoque() == 10) {				
+					System.out.printf("╔                                ╗\n║ Estoque: %d chocolates Nestlé. ║\n", doce.getQuantEstoque());
+					System.out.printf("║ Preço unitário: R$%.2f.        ║\n╚                                ╝" , doce.getValorUnitario());
+					System.out.print("\nQuantos você deseja comprar? ");
 					int quantidadeDoces = leia.nextInt();
-				
-					for(int x = 0; x < lista.size(); x++) {
-						if(lista.get(x).getDescricao().contains("chocolate") == true) {
-							if(quantidadeDoces <= lista.get(x).getQuantEstoque())
-							{
-								lista.get(x).retirarEstoque(quantidadeDoces);
-								
-								totalDoces = quantidadeDoces;
-								totalDoces *= doce.getValorUnitario();
-							}
-							else 
-							{
-								System.out.println("Não temos essa quantidade no estoque...");
-							}
-						}
-					}
-				
-			}
-				
-			} else if (tipoProduto == 4) { // Início gelo
-				
-				while(gelo.getQuantEstoque() == 10) {
 					
-					System.out.printf("Quantas você deseja comprar? Estoque: %d \n", gelo.getQuantEstoque());
-					System.out.printf("Preço unitário: R$%.2f \n", gelo.getValorUnitario());
+					if (quantidadeDoces < 1) {
+						System.out.println("\n» Por favor, insira um valor de 1 a 10.\n");
+					} else {
+						compraEfetuada = true;
+						
+						for (int x = 0; x < lista.size(); x++) {
+							if (lista.get(x).getDescricao().contains("Chocolate") == true) {
+								if (quantidadeDoces <= lista.get(x).getQuantEstoque()) {
+									lista.get(x).retirarEstoque(quantidadeDoces);
+									
+									totalDoces = quantidadeDoces;
+									totalDoces *= doce.getValorUnitario();
+									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
+								}
+								else {
+									System.out.println("» Não temos essa quantidade no estoque...");
+								}
+							}
+						}					
+					}
+				}				
+			} else if (tipoProduto == 4) { // Início Gelo
+				
+				while (gelo.getQuantEstoque() == 10) {					
+					System.out.printf("╔                                          ╗\n║ Estoque: %d pacotes de gelo de %.2f kg. ║\n", gelo.getQuantEstoque() , gelo.getPeso());
+					System.out.printf("║ Preço unitário: R$%.2f.                 ║\n╚                                          ╝" , gelo.getValorUnitario());
+					System.out.print("\nQuantos pacotoes você deseja comprar? ");
 					int quantidadeGelo = leia.nextInt();
-				
-					for(int x = 0; x < lista.size(); x++) {
-						if(lista.get(x).getDescricao().contains("gelo") == true) {
-							if(quantidadeGelo <= lista.get(x).getQuantEstoque())
-							{
-								lista.get(x).retirarEstoque(quantidadeGelo);
-								
-								totalGelo = quantidadeGelo;
-								totalGelo *= gelo.getValorUnitario();
+					
+					if (quantidadeGelo < 1) {
+						System.out.println("\n» Por favor, insira um valor de 1 a 10.\n");
+					} else {
+						compraEfetuada = true;
+						
+						for (int x = 0; x < lista.size(); x++) {
+							if (lista.get(x).getDescricao().contains("Gelo") == true) {
+								if (quantidadeGelo <= lista.get(x).getQuantEstoque()) {
+									lista.get(x).retirarEstoque(quantidadeGelo);
+									
+									totalGelo = quantidadeGelo;
+									totalGelo *= gelo.getValorUnitario();
+									
+									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
+								} else {
+									System.out.println("» Não temos essa quantidade no estoque...");
+								}
 							}
-							else 
-							{
-								System.out.println("Não temos essa quantidade no estoque...");
-							}
-						}
+						}					
 					}
+				}
+			} else if (tipoProduto == 5) { // Início Revista
 				
-			}  
-				
-			} else if (tipoProduto == 5) { // Início revista
-				while(marvel.getQuantEstoque() == 10) {
-					System.out.printf("Quantas você deseja comprar? Estoque: %d \n", marvel.getQuantEstoque());
-					System.out.printf("Preço unitário: R$%.2f \n", marvel.getValorUnitario());
+				while (marvel.getQuantEstoque() == 10) {
+					System.out.printf("╔                              ╗\n║ Estoque: %d revistas Marvel. ║\n", marvel.getQuantEstoque());
+					System.out.printf("║ Preço unitário: R$%.2f.     ║\n╚                              ╝" , marvel.getValorUnitario());
+					System.out.print("\nQuantas você deseja comprar? ");
 					int quantidadeRevista = leia.nextInt();
-				
-					for(int x = 0; x < lista.size(); x++) {
-						if(lista.get(x).getDescricao().contains("marvel") == true) {
-							if(quantidadeRevista <= lista.get(x).getQuantEstoque())
-							{
-								lista.get(x).retirarEstoque(quantidadeRevista);
-								
-								totalRevista = quantidadeRevista;
-								totalRevista *= marvel.getValorUnitario();
+					
+					if (quantidadeRevista < 1) {
+						System.out.println("\n» Por favor, insira um valor de 1 a 10.\n");
+					} else {
+						compraEfetuada = true;
+						
+						for (int x = 0; x < lista.size(); x++) {
+							if (lista.get(x).getDescricao().contains("Revista Marvel") == true) {
+								if (quantidadeRevista <= lista.get(x).getQuantEstoque()) {
+									lista.get(x).retirarEstoque(quantidadeRevista);
+									
+									totalRevista = quantidadeRevista;
+									totalRevista *= marvel.getValorUnitario();
+									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
+								} else {
+									System.out.println("» Não temos essa quantidade no estoque...");
+								}
 							}
-							else 
-							{
-								System.out.println("Não temos essa quantidade no estoque...");
-							}
-						}
+						}			
 					}
-				
-			}  
-	}
-
-				
+				}
+			}
+		} while (tipoProduto != 6);
+		
+		if (compraEfetuada == true) {
+			total = totalBebida + totalSalgadinho + totalDoces + totalRevista + totalGelo;
 			
-		} while (tipoProduto != 6);	
-		total = totalBebida + totalSalgadinho + totalDoces + totalRevista + totalGelo;
-		
-		Loja loja = new Loja("515115", "1ksks");
-		
-		System.out.println("Digite a forma de pagamento 1-Crédito | 2-Débito | 3-Dinheiro");
-		int opcaoPagamento = leia.nextInt();
-		
-		if(opcaoPagamento == 1) {
-			System.out.println("Digite o tanto de parcelas (max: 2)");
-			vezes = leia.nextInt();
+			Loja loja = new Loja("515115", "1ksks");
+			
+			System.out.print("╔                ╗\n║ • 1 - Crédito  ║\n║ • 2 - Débito   ║\n║ • 3 - Dinheiro ║\n╚                ╝");
+			System.out.print("\nSelecione a forma de pagamento: ");
+			int opcaoPagamento = leia.nextInt();
+			System.out.println();
+			
+			if(opcaoPagamento == 1) {
+				System.out.print("Informe o número de parcelas: [Máx: 2] ");
+				vezes = leia.nextInt();
+			}
+
+			loja.pagamento(opcaoPagamento, vezes, total);
+			loja.emissaoNota(total, lista);
+			
+			System.out.println();
+			System.out.println("                                             Obrigado e volte sempre!");	
+		} else {
+			System.out.println("» Dando só uma olhadinha, né? Obrigado e volte sempre!... (Com dinheiro...)");
 		}
-		
-		loja.pagamento(opcaoPagamento, vezes, total);
-		loja.emissaoNota(total, lista);
-		
-		System.out.println("\nFim programa.");
-		
-		
 	}
 
 	public static void limpatela() { 
@@ -236,8 +261,3 @@ public class cadVendas  {
 	}
 		
 }
-	
-
-
-
-

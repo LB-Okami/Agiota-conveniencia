@@ -1,20 +1,21 @@
 package entities;
 
 public abstract class Produto {
-	//Atributos
+	
+	// Atributos
 	private String descricao;
 	private String codigo;
 	private double valorUnitario;
 	private int quantEstoque = 10;
 	
-	//Construtor 
+	// Construtor 
 	public Produto(String descricao, String codigo, double valorUnitario) {
 		super();
 		this.descricao = descricao;
 		this.codigo = codigo; 
 		this.valorUnitario = valorUnitario;
 	}
-	//Construtor com sobrecarga
+	// Construtor com sobrecarga
 	public Produto(String descricao, String codigo, double valorUnitario, int quantEstoque) {
 		super();
 		this.descricao = descricao;
@@ -29,13 +30,11 @@ public abstract class Produto {
 		this.codigo = codigo;
 	}
 
-	//Encapsulamento - getters & setters
+	// Encapsulamento - getters & setters
 	public String getDescricao() {
 		return descricao;
 	}
 
-
-	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
@@ -72,7 +71,7 @@ public abstract class Produto {
 	
 	*/
 	
-	//Métodos
+	// Métodos
 	public void incluirEstoque(int valorInserido) {
 		this.quantEstoque += valorInserido;
 		
