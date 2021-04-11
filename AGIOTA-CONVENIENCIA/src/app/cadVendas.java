@@ -48,7 +48,7 @@ public abstract class cadVendas  { // Adicionando "abstract"
 		System.out.println();
 		System.out.println();
 			
-		Thread.sleep(100);
+		Thread.sleep(20);
 		
 		System.out.print("               Carregando sistema");
 
@@ -59,18 +59,18 @@ public abstract class cadVendas  { // Adicionando "abstract"
 				reticencias = ".";
 				System.out.print(reticencias);
 				reticencias += ".";
-				Thread.sleep(100);			
+				Thread.sleep(2000);			
 			}
 		}
 		
 		System.out.println();
 		System.out.println();
 		System.out.println("               [Sistema carregado]");
-		Thread.sleep(100);
+		Thread.sleep(2000);
 		
 		
 		
-		limpatela();
+		limpaTela();
 		
 		int tipoProduto;
 		boolean compraEfetuada = false;
@@ -78,7 +78,7 @@ public abstract class cadVendas  { // Adicionando "abstract"
 		do {
 			System.out.print("╔                   ╗\n║ • 1 - Bebidas     ║\n║ • 2 - Salgadinhos ║\n║ • 3 - Doces       ║\n║ • 4 - Gelo        ║\n║ • 5 - Revistas    ║\n║                   ║\n║ • 6 - Sair"
 					+ "        ║\n╚                   ╝");
-			System.out.print("\nSelecione uma opção: ");
+			System.out.print("\n» Selecione uma opção: ");
 			tipoProduto = leia.nextInt();
 			System.out.println();
 			
@@ -136,7 +136,7 @@ public abstract class cadVendas  { // Adicionando "abstract"
 									totalSalgadinho *= queijo.getValorUnitario();
 									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
 								} else {
-									System.out.println("» Não temos essa quantidade no estoque...");
+									System.out.println("\n» Não temos essa quantidade no estoque...");
 								}
 							}
 						}					
@@ -165,7 +165,7 @@ public abstract class cadVendas  { // Adicionando "abstract"
 									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
 								}
 								else {
-									System.out.println("» Não temos essa quantidade no estoque...");
+									System.out.println("\n» Não temos essa quantidade no estoque...");
 								}
 							}
 						}					
@@ -194,7 +194,7 @@ public abstract class cadVendas  { // Adicionando "abstract"
 									
 									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
 								} else {
-									System.out.println("» Não temos essa quantidade no estoque...");
+									System.out.println("\n» Não temos essa quantidade no estoque...");
 								}
 							}
 						}					
@@ -222,7 +222,7 @@ public abstract class cadVendas  { // Adicionando "abstract"
 									totalRevista *= marvel.getValorUnitario();
 									System.out.print("\n» Você terminou sua compra. Por favor, escolha outro produto para comprar ou realize o pagamento.\n\n");
 								} else {
-									System.out.println("» Não temos essa quantidade no estoque...");
+									System.out.println("\n» Não temos essa quantidade no estoque...");
 								}
 							}
 						}			
@@ -237,26 +237,55 @@ public abstract class cadVendas  { // Adicionando "abstract"
 			Loja loja = new Loja("515115", "1ksks");
 			
 			System.out.print("╔                ╗\n║ • 1 - Crédito  ║\n║ • 2 - Débito   ║\n║ • 3 - Dinheiro ║\n╚                ╝");
-			System.out.print("\nSelecione a forma de pagamento: ");
+			System.out.print("\n» Selecione a forma de pagamento: ");
 			int opcaoPagamento = leia.nextInt();
+			
+			while (opcaoPagamento <= 0 || opcaoPagamento > 3) {
+				System.out.println("» Por favor, insira uma opção válida.");
+				opcaoPagamento = leia.nextInt();
+			} 
+			
+			if (opcaoPagamento == 1) {
+				System.out.print("\n» Informe o número de parcelas: [Máx: 2] ");
+				vezes = leia.nextInt();
+				while (vezes <= 0 || vezes > 2) {
+					System.out.print("\n» Informe um número válido de parcelas: ");
+					vezes = leia.nextInt();
+				}
+			}
+			
+			loja.pagamento(opcaoPagamento, vezes, total);
+			
+			Thread.sleep(2000);
+			
+			System.out.println();
+			System.out.println();
 			System.out.println();
 			
-			if(opcaoPagamento == 1) {
-				System.out.print("Informe o número de parcelas: [Máx: 2] ");
-				vezes = leia.nextInt();
+			System.out.print("               Imprimindo Nota Fiscal");
+			
+			String reticencias1 = "";
+			
+			for (int x = 0; x < 3; x++) {			
+				for (int y = 0; y < 1; y++) {
+					reticencias1 = ".";
+					System.out.print(reticencias1);
+					reticencias1 += ".";
+					Thread.sleep(2000);			
+				}
 			}
-
-			loja.pagamento(opcaoPagamento, vezes, total);
+			
+			limpaTela();
+			
 			loja.emissaoNota(total, lista);
 			
 			System.out.println();
-			System.out.println("                                             Obrigado e volte sempre!");	
 		} else {
 			System.out.println("» Dando só uma olhadinha, né? Obrigado e volte sempre!... (Com dinheiro...)");
 		}
 	}
 
-	public static void limpatela() { 
+	public static void limpaTela() { 
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n"); 
 	}
 		
