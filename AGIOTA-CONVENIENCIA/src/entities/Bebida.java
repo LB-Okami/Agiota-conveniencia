@@ -14,7 +14,9 @@ public class Bebida extends Produto{
 		return fabricante;
 	}
 
+	/*
 	public void setFabricante(String fabricante) {
 		this.fabricante = fabricante;
 	}
+	*/
 }

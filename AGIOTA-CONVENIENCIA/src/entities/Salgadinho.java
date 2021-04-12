@@ -18,9 +18,10 @@ public class Salgadinho extends Produto{
 		return sabor;
 	}
 
+	/*
 	public void setSabor(String sabor) {
 		this.sabor = sabor;
 	}
-	
+	*/
 	
 }

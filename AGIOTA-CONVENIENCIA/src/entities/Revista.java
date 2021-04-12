@@ -23,9 +23,10 @@ public class Revista extends Produto {
 		return editora;
 	}
 
+	/*
 	public void setEditora(String editora) {
 		this.editora = editora;
 	}
-	
+	*/
 	
 }

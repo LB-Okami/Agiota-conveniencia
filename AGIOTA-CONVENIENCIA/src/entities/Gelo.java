@@ -18,7 +18,9 @@ public class Gelo extends Produto {
 		return peso;
 	}
 
+	/*
 	public void setPeso(double peso) {
 		this.peso = peso;
 	}
+	*/
 }
